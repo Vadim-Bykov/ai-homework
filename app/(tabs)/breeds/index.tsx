@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   FlatList,
   Pressable,
+  SafeAreaView,
   StyleSheet,
 } from "react-native";
 
@@ -55,7 +56,7 @@ export default function BreedListScreen() {
   }
 
   return (
-    <ThemedView style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={breeds}
         keyExtractor={(item) => item}
@@ -81,7 +82,7 @@ export default function BreedListScreen() {
           </ThemedView>
         )}
       />
-    </ThemedView>
+    </SafeAreaView>
   );
 }
 
