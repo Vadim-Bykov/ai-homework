@@ -2,7 +2,17 @@
 
 A mobile app to browse, search, and view images of dog breeds using the [Dog CEO API](https://dog.ceo/dog-api/). Built with Expo, React Native, and TypeScript.
 
-![screenshot](./screenshot.png) <!-- Add your screenshot here -->
+## Screenshots
+
+> Place your screenshots in the `screenshots/` directory in the project root.
+
+|                Breeds List (Light)                |               Breed Gallery               |               Settings                |
+| :-----------------------------------------------: | :---------------------------------------: | :-----------------------------------: |
+| ![Breeds List](screenshots/breeds-list-light.png) | ![Gallery](screenshots/breed-gallery.png) | ![Settings](screenshots/settings.png) |
+
+|          About Screen           |           Error State           |                  Dark Mode                  |
+| :-----------------------------: | :-----------------------------: | :-----------------------------------------: |
+| ![About](screenshots/about.png) | ![Error](screenshots/error.png) | ![Dark](screenshots/breed-gallery-dark.png) |
 
 ## Features
 

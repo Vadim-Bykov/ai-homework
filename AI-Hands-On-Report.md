@@ -59,8 +59,24 @@ Dog Breed Explorer — a mobile app to browse, search, and view images of dog br
 
 ## 8. Screenshots & Demo
 
-- [ ] Add screenshots here
-- [ ] (Optional) Add link to demo video
+### Main Screenshots
+
+- **Breeds List (Light):**
+  ![Breeds List Light](screenshots/breeds-list-light.png)
+- **Breed Gallery:**
+  ![Breed Gallery](screenshots/breed-gallery.png)
+- **Settings (Theme Switcher):**
+  ![Settings](screenshots/settings.png)
+- **About Screen:**
+  ![About](screenshots/about.png)
+- **Error State:**
+  ![Error](screenshots/error.png)
+- **Dark Mode Example:**
+  ![Dark Mode](screenshots/breed-gallery-dark.png)
+
+### Demo Video
+
+- [ ] (Optional) Add link to demo video here
 
 ## 9. Reflection
 
