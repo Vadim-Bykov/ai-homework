@@ -1,6 +1,6 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { getAllBreeds, getBreedImages } from "./DogApi";
+import { getAllBreeds, getBreedImages, getBreedThumbnail } from "./DogApi";
 
 const API_BASE_URL = "https://dog.ceo/api";
 
@@ -71,6 +71,39 @@ describe("DogApi Service", () => {
       await expect(getBreedImages(breedName)).rejects.toThrow(
         `Failed to fetch images for ${breedName}.`
       );
+    });
+  });
+
+  describe("getBreedThumbnail", () => {
+    const breedName = "labrador";
+    it("should fetch a random thumbnail for a breed successfully", async () => {
+      const mockData = {
+        message: "https://images.dog.ceo/breeds/labrador/n02099712_1006.jpg",
+        status: "success",
+      };
+      mock
+        .onGet(`${API_BASE_URL}/breed/${breedName}/images/random`)
+        .reply(200, mockData);
+      const url = await getBreedThumbnail(breedName);
+      expect(url).toBe(mockData.message);
+    });
+    it("should return null if the API call fails", async () => {
+      mock
+        .onGet(`${API_BASE_URL}/breed/${breedName}/images/random`)
+        .networkError();
+      const url = await getBreedThumbnail(breedName);
+      expect(url).toBeNull();
+    });
+    it("should return null if API status is not success", async () => {
+      const mockData = {
+        message: "",
+        status: "error",
+      };
+      mock
+        .onGet(`${API_BASE_URL}/breed/${breedName}/images/random`)
+        .reply(200, mockData);
+      const url = await getBreedThumbnail(breedName);
+      expect(url).toBeNull();
     });
   });
 });

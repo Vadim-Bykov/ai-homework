@@ -1,110 +1,107 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { ExternalLink } from "@/components/ExternalLink";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-
-export default function TabTwoScreen() {
+export default function AboutScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
+    <SafeAreaView style={{ flex: 1 }} edges={["top", "left", "right"]}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <ThemedView style={styles.container}>
+          <ThemedText type="title" style={styles.title}>
+            About Dog Breed Explorer
           </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+          <ThemedText style={styles.paragraph}>
+            <ThemedText type="defaultSemiBold">Dog Breed Explorer</ThemedText>{" "}
+            is a mobile app that lets you browse, search, and view images of dog
+            breeds from around the world. The app is built with Expo, React
+            Native, and TypeScript, and uses the open-source{" "}
+            <ExternalLink href="https://dog.ceo/dog-api/">
+              Dog CEO API
+            </ExternalLink>
+            .
+          </ThemedText>
+          <ThemedText type="subtitle" style={styles.sectionTitle}>
+            Features
+          </ThemedText>
+          <View style={styles.list}>
+            <ThemedText>• Browse a list of all dog breeds</ThemedText>
+            <ThemedText>• View a gallery of images for each breed</ThemedText>
+            <ThemedText>• Pull-to-refresh for new images</ThemedText>
+            <ThemedText>• Light, dark, and system theme support</ThemedText>
+            <ThemedText>• Manual theme switcher in Settings</ThemedText>
+            <ThemedText>• Error and loading states</ThemedText>
+          </View>
+          <ThemedText type="subtitle" style={styles.sectionTitle}>
+            Navigation
+          </ThemedText>
+          <ThemedText style={styles.paragraph}>
+            Use the bottom tabs to switch between:
+            {"\n"}- <ThemedText type="defaultSemiBold">Breeds</ThemedText>: List
+            of all breeds and galleries
+            {"\n"}- <ThemedText type="defaultSemiBold">Settings</ThemedText>:
+            Theme switcher
+            {"\n"}- <ThemedText type="defaultSemiBold">About</ThemedText>: This
+            info screen
+          </ThemedText>
+          <ThemedText type="subtitle" style={styles.sectionTitle}>
+            Theming
+          </ThemedText>
+          <ThemedText style={styles.paragraph}>
+            The app supports light, dark, and system themes. Go to Settings to
+            change the theme at any time.
+          </ThemedText>
+          <ThemedText type="subtitle" style={styles.sectionTitle}>
+            AI Usage
+          </ThemedText>
+          <ThemedText style={styles.paragraph}>
+            This app was designed, architected, and partially coded with the
+            help of AI. See the AI Hands-On Report in the repo for details.
+          </ThemedText>
+          <ThemedText style={styles.footer}>
+            Made by Bykau Vadzim, 2024
+          </ThemedText>
+        </ThemedView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  scrollContent: {
+    flexGrow: 1,
   },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
+  container: {
+    flex: 1,
+    padding: 24,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+  },
+  title: {
+    marginBottom: 16,
+    fontSize: 28,
+  },
+  sectionTitle: {
+    marginTop: 24,
+    marginBottom: 8,
+    fontSize: 18,
+  },
+  paragraph: {
+    marginBottom: 8,
+    fontSize: 16,
+  },
+  list: {
+    marginLeft: 12,
+    marginBottom: 8,
+    gap: 2,
+  },
+  footer: {
+    marginTop: 32,
+    fontSize: 14,
+    color: "#888",
+    alignSelf: "center",
+    width: "100%",
+    textAlign: "center",
   },
 });

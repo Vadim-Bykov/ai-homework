@@ -35,3 +35,25 @@ export const getBreedImages = async (breedName: string): Promise<string[]> => {
     throw new Error(`Failed to fetch images for ${breedName}.`);
   }
 };
+
+/**
+ * Fetches a random image URL for a specific dog breed (for thumbnail).
+ * @param {string} breedName - The name of the breed to fetch a random image for.
+ * @returns {Promise<string|null>} A promise that resolves to a single image URL or null on error.
+ */
+export const getBreedThumbnail = async (
+  breedName: string
+): Promise<string | null> => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/breed/${breedName}/images/random`
+    );
+    if (response.data.status === "success") {
+      return response.data.message;
+    }
+    return null;
+  } catch (error) {
+    console.error(`Error fetching thumbnail for breed ${breedName}:`, error);
+    return null;
+  }
+};
