@@ -1,5 +1,6 @@
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { useThemeColor } from "@/hooks/useThemeColor";
 import { getBreedImages } from "@/services/DogApi";
 import { Stack, useLocalSearchParams } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
@@ -17,6 +18,7 @@ export default function BreedGalleryScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const cardColor = useThemeColor({}, "card");
 
   const fetchImages = useCallback(async () => {
     if (!name) return;
@@ -72,7 +74,10 @@ export default function BreedGalleryScreen() {
         keyExtractor={(item) => item}
         numColumns={2}
         renderItem={({ item }) => (
-          <Image source={{ uri: item }} style={styles.image} />
+          <Image
+            source={{ uri: item }}
+            style={[styles.image, { backgroundColor: cardColor }]}
+          />
         )}
         contentContainerStyle={styles.listContent}
         refreshControl={
@@ -100,6 +105,5 @@ const styles = StyleSheet.create({
     height: 150,
     margin: 5,
     borderRadius: 10,
-    backgroundColor: "#eee",
   },
 });

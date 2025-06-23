@@ -1,5 +1,6 @@
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { useThemeColor } from "@/hooks/useThemeColor";
 import { getAllBreeds } from "@/services/DogApi";
 import { Link } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -14,6 +15,7 @@ export default function BreedListScreen() {
   const [breeds, setBreeds] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const borderColor = useThemeColor({}, "border");
 
   useEffect(() => {
     const fetchBreeds = async () => {
@@ -60,7 +62,12 @@ export default function BreedListScreen() {
         renderItem={({ item }) => (
           <Link href={`/breed/${item}`} asChild>
             <Pressable>
-              <ThemedView style={styles.itemContainer}>
+              <ThemedView
+                style={[
+                  styles.itemContainer,
+                  { borderBottomColor: borderColor },
+                ]}
+              >
                 <ThemedText type="subtitle" style={styles.breedText}>
                   {item}
                 </ThemedText>
@@ -95,7 +102,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
   },
   breedText: {
     textTransform: "capitalize",
