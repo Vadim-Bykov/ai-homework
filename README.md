@@ -35,7 +35,7 @@ A mobile app to browse, search, and view images of dog breeds using the [Dog CEO
 
 ```sh
 # Clone the repo
-git clone https://github.com/your-username/ai-homework.git
+git clone https://github.com/Vadim-Bykov/ai-homework.git
 cd ai-homework
 
 # Install dependencies
