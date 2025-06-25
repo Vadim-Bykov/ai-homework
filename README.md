@@ -14,6 +14,12 @@ A mobile app to browse, search, and view images of dog breeds using the [Dog CEO
 | :-----------------------------: | :-----------------------------: | :-----------------------------------------: |
 | ![About](screenshots/about.png) | ![Error](screenshots/error.png) | ![Dark](screenshots/breed-gallery-dark.png) |
 
+## Demo Video
+
+[▶️ Watch demo video](screenshots/video.mp4)
+
+<video src="screenshots/video.mp4" controls width="400"></video>
+
 ## Features
 
 - Browse a list of all dog breeds

@@ -76,7 +76,9 @@ Dog Breed Explorer — a mobile app to browse, search, and view images of dog br
 
 ### Demo Video
 
-- [ ] (Optional) Add link to demo video here
+[▶️ Watch demo video](screenshots/video.mp4)
+
+<video src="screenshots/video.mp4" controls width="400"></video>
 
 ## 9. Reflection
 
